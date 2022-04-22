@@ -1,0 +1,59 @@
+//
+//  ViewController.swift
+//  Layout Features
+//
+//  Created by Mikhail Lukianov
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+   let spaceimageView: UIImageView = {
+       let imageView = UIImageView()
+       imageView.image = UIImage(named: "spaceUp")
+       imageView.layer.cornerRadius = 25 // radius of angles
+       imageView.clipsToBounds = true // to cut angles of the pic
+       imageView.layer.borderWidth = 3.0 // borders
+       imageView.layer.borderColor = UIColor.red.cgColor //borders colors
+       imageView.translatesAutoresizingMaskIntoConstraints = false // call this property so the image is will add to view
+       return imageView
+       
+   }()
+    
+    
+    let myTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "We should ALL explore Space"
+        textView.font = UIFont.boldSystemFont(ofSize: 40)
+        textView.textAlignment = .center
+        textView.textColor = UIColor.systemYellow
+        textView.backgroundColor = .gray
+        textView.translatesAutoresizingMaskIntoConstraints = false // call this property so the image is will add to view
+        return textView
+    } ()
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .lightGray //picture view background
+        
+        view.addSubview(spaceimageView) //call image on the view
+        view.addSubview(myTextView)     //call text on thr view
+        setupLayout()
+        
+    }
+    private func setupLayout() {
+        spaceimageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spaceimageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        spaceimageView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        spaceimageView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        myTextView.topAnchor.constraint(equalTo: spaceimageView.bottomAnchor, constant: 50).isActive = true
+        myTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        myTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        myTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+    }
+ 
+}
+
